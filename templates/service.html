@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             background-color: #ffffcc; /* Light yellow background */
-            background-image: url('background.jpg'); /* Background image */
+            background-image: url('background.png'); /* Background image */
             background-size: cover;
             background-repeat: no-repeat;
         }
@@ -87,17 +87,17 @@
 </head>
 <body>
     <div class="container">
-        <h2>Text Summarize</h2>
+        <h2>Text Summarizer</h2>
         <form id="inputForm">
             <div>
                 <label for="inputData">Input:</label>
                 <textarea id="inputData" name="inputData" rows="4" required></textarea>
             </div>
-            <button type="submit">Summarize This!</button>
+            <button type="submit">Tóm tắt!</button>
         </form>
         <div class="output" id="outputArea"></div>
-        <button id="copyBtn">Copy to Clipboard</button>
-        <button id="downloadBtn">Download Output</button>
+        <button id="copyBtn">Chép vào Clipboard</button>
+        <button id="downloadBtn">Tải xuống kết quả</button>
     </div>
 
     <script>
@@ -107,7 +107,7 @@
 
             // Bỏ script vào dòng này
             // Vì chưa script có nên coi output bằng input trước
-            var output = "Answer: " + inputData;
+            var output = "Trả lời: " + inputData;
 
             // Gọi hàm tạo animation chữ in ra màn hình
             typeWriter(output);
@@ -130,9 +130,9 @@
         document.getElementById('copyBtn').addEventListener('click', function() {
             var outputText = document.getElementById('outputArea').innerText;
             navigator.clipboard.writeText(outputText).then(function() {
-                alert('Output copied to clipboard!');
+                alert('Kết quả đã chép vào clipboard!');
             }, function(err) {
-                console.error('Failed to copy output: ', err);
+                console.error('Chép vào clipboard thấi bại: ', err);
             });
         });
 
