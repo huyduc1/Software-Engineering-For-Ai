@@ -1,0 +1,16 @@
+error 1: get all users
+error 2: get one users
+error 3: add an user
+error 4: update an user
+error 5: delete an user
+error 
+error 
+error 
+error 
+error 
+error 
+error 
+error 
+error 
+error 
+error 
