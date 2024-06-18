@@ -14,8 +14,7 @@ def userEntity(item) -> dict:
     # print(type(item["_id"]))
     # print(type(item["_id"]) is str)
     return {
-        
-        'id': cast_to_string(item["_id"]),
+        'id': str(item["_id"]),
         'name': item["name"],
         'age': item["age"],
         'email': item["email"],
@@ -26,5 +25,8 @@ def userEntity(item) -> dict:
 def usersEntity(items) -> list:
     return [userEntity(item) for item in items]
 
+def serializeDict(user) -> dict:
+    return {**{key: str(user[key]) for key in user if key == "_id"}, **{ key: user[key] for key in user if key != "_id"}}
 
-
+def serializeList(users) -> list:
+    return [serializeDict(user) for user in users]
