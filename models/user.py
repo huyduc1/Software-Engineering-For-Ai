@@ -6,3 +6,10 @@ class User(BaseModel):
     email: str
     password: str
     gender: str
+    hashed_password: str
+    disabled: bool
+    role: str
+
+class UserInDB(User):
+    hashed_password: str
+    

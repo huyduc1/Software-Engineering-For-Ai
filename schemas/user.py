@@ -1,18 +1,12 @@
 from bson import ObjectId
+
+
 def cast_to_string(id):
     if type(id) is not str:
-        print("check")
         id = str(id)
-    print("+++++++++++++")
     return id
 
 def userEntity(item) -> dict:
-    # if item["_id"] is None:
-    #     print("id is none")
-    print(type(item))
-    # print(item["_id"])
-    # print(type(item["_id"]))
-    # print(type(item["_id"]) is str)
     return {
         'id': str(item["_id"]),
         'name': item["name"],
