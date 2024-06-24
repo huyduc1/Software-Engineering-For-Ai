@@ -50,7 +50,7 @@ async def delete_user(id):
 """
 
 
-@user.get("/")
+@user.get("/all-users")
 async def find_all_users():
     try:
         return serializeList(conn.local.user.find())

@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Poppins_21.0.0_google";
+  src: url("../../../fonts/Poppins-Semibold_21.0.0_google.ttf");
+  font-weight: 600; 
+}
+@font-face {
+  font-family: "Poppins_21.0.0_google";
+  src: url("../../../fonts/Poppins-Regular_21.0.0_google.ttf");
+  font-weight: 400; 
+}
+@font-face {
+  font-family: "UTM Charlotte_0.0.0_system";
+  src: url("../../../fonts/UTM Charlotte-Regular_0.0.0_system.ttf");
+  font-weight: 400; 
+}
+@font-face {
+  font-family: "UTM Swiss 721 Black Condensed_0.0.0_system";
+  src: url("../../../fonts/UTM Swiss 721 Black Condensed-Condensed Black_0.0.0_system.ttf");
+  font-weight: 900; 
+  font-style: condensed;
+}
+@font-face {
+  font-family: "UTM Alberta Heavy_0.0.0_system";
+  src: url("../../../fonts/UTM Alberta Heavy-Heavy_0.0.0_system.ttf");
+  font-weight: 900; 
+}

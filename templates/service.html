@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarize</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffcc; /* Light yellow background */
+            background-image: url('background.jpg'); /* Background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* White container background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #3366cc; /* Blue heading */
+            text-align: center;
+        }
+        
+        label {
+            font-weight: bold;
+            color: #cc3300; /* Red label */
+        }
+        
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #cccccc; /* Light gray border */
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #ffcc00; /* Yellow button */
+            color: #333333; /* Dark gray text */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #ff9900; /* Darker yellow on hover */
+        }
+        
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffff99; /* Light yellow output background */
+            border-radius: 4px;
+            border: 1px solid #cccccc; /* Light gray border */
+            color: #333333; /* Dark gray text */
+            line-height: 1.5;
+        }
+
+        #copyBtn, #downloadBtn {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #ff9900; /* Dark yellow button */
+            color: #ffffff; /* White text */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #copyBtn:hover, #downloadBtn:hover {
+            background-color: #cc6600; /* Darker orange on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Text Summarize</h2>
+        <form id="inputForm">
+            <div>
+                <label for="inputData">Input:</label>
+                <textarea id="inputData" name="inputData" rows="4" required></textarea>
+            </div>
+            <button type="submit">Summarize This!</button>
+        </form>
+        <div class="output" id="outputArea"></div>
+        <button id="copyBtn">Copy to Clipboard</button>
+        <button id="downloadBtn">Download Output</button>
+    </div>
+
+    <script>
+        document.getElementById('inputForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var inputData = document.getElementById('inputData').value;
+
+            // Bỏ script vào dòng này
+            // Vì chưa script có nên coi output bằng input trước
+            var output = "Answer: " + inputData;
+
+            // Gọi hàm tạo animation chữ in ra màn hình
+            typeWriter(output);
+        });
+
+        // Hàm download output về txt
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            var outputText = document.getElementById('outputArea').innerText;
+            var blob = new Blob([outputText], { type: 'text/plain' });
+            var url = window.URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'output.txt';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+
+        // Hàm copy output về clipboard
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            var outputText = document.getElementById('outputArea').innerText;
+            navigator.clipboard.writeText(outputText).then(function() {
+                alert('Output copied to clipboard!');
+            }, function(err) {
+                console.error('Failed to copy output: ', err);
+            });
+        });
+
+        // Hàm tạo animation chữ in ra màn hình
+        function typeWriter(text) {
+            var outputArea = document.getElementById('outputArea');
+            var i = 0;
+            var speed = 15; // Tốc độ trên milisecond
+            outputArea.innerHTML = ''; // Xoá vùng in output 
+            // Lặp để in
+            function type() {
+                if (i < text.length) {
+                    outputArea.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+    </script>
+</body>
+</html>
